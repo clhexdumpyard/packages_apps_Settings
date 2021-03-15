@@ -63,6 +63,9 @@ public class MinRefreshRatePreferenceController extends BasePreferenceController
     @Override
     public int getAvailabilityStatus() {
         return mEntries.size() > 1 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return mContext.getResources().getBoolean(R.bool.config_show_refresh_rate_controls) &&
+                mListPreference != null && mListPreference.getEntries().length > 1
+                        ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
